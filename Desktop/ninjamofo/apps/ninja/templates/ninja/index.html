@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ninja Gold</title>
+	<style>
+		#locations{
+			display: inline-block;
+			border: 1px solid black;
+			margin-left: 50px;
+			padding: 5px;
+		}
+		
+
+	</style>
+</head>
+<body>
+	<div>
+		<label for="">Your Gold: {{request.session.gold}}</label>
+	</div>
+	<br>
+	<br>
+	<div>
+		
+			<div id="locations">
+				<form action="farm" method="POST">
+					{% csrf_token %}
+					<h3>Farm</h3>
+					<p>earns 10-20 golds</p><br><br>
+					<input type="submit" value="Find Gold!" name="farm">
+				</form>
+			</div>
+		
+			<div id="locations">
+				<form action="cave" method="POST">
+					{% csrf_token %}
+					<h3>Cave</h3>
+					<p>earns 5-10 golds</p><br><br>
+					<input type="submit" value="Find Gold!" name="cave">
+				</form>
+			</div>
+		
+		
+			<div id="locations">
+				<form action="house" method="POST">
+					{% csrf_token %}
+					<h3>House</h3>
+					<p>earns 2-5 golds</p><br><br>
+					<input type="submit" value="Find Gold!" name="house">
+				</form>
+			</div>
+		
+			<div id="locations">
+				<form action="casino" method="POST">
+					{% csrf_token %}
+					<h3>Casino</h3>
+					<p>lose or earn 50 golds</p><br><br>
+					<input type="submit" value="Find Gold!" name="casino">
+				</form>
+			</div>
+		
+	<div>
+		<h3>Activities:</h3>
+		
+			
+			{% for i in request.session.count %}
+			<p>Got {{i.gold}} from {{i.name}} at {{time}}</p>
+			{% endfor %}
+		
+
+		
+	</div>
+</div>
+</body>
+</html>
+
+
+
